@@ -1,3 +1,9 @@
 [submodule "doc"]
 	path = doc
 	url = https://github.com/mlssky/doc.git
+[submodule "VasSonic"]
+	path = VasSonic
+	url = https://github.com/Tencent/VasSonic
+[submodule "ht-candywebcache-android"]
+	path = ht-candywebcache-android
+	url = https://github.com/NEYouFan/ht-candywebcache-android.git
