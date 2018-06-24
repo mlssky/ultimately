@@ -7,3 +7,6 @@
 [submodule "ht-candywebcache-android"]
 	path = ht-candywebcache-android
 	url = https://github.com/NEYouFan/ht-candywebcache-android.git
+[submodule "doc_submodule"]
+	path = doc_submodule
+	url = https://github.com/mlssky/doc_submodule.git
