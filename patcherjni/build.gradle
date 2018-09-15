@@ -2,12 +2,9 @@ import com.android.build.gradle.internal.dsl.NdkBuildOptions
 
 apply plugin: 'com.android.library'
 
-//用于加载so
-//https://github.com/KeepSafe/ReLinker
 
 android {
     compileSdkVersion 27
-
 
     defaultConfig {
         minSdkVersion 14

@@ -1,5 +1,6 @@
 include $(call all-subdir-makefiles)
 
+#
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -17,6 +18,7 @@ LOCAL_SRC_FILES = $(LOCAL_PATH)/3rd/bsdiff/bsdiff.c \
 
 LOCAL_SRC_FILES += $(LOCAL_PATH)/PatcherJni.cpp
 
+#
 LOCAL_CFLAGS := -DDEBUG
 
 # LOCAL_CPPFLAGS :=

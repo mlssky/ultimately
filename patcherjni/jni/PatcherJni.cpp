@@ -23,8 +23,28 @@ static JNINativeMethod gCourgettePatcherMethods[] = {
 };
 
 
-static jboolean BsdiffPatcher_nativeApplyPatch(JNIEnv *env, jclass, jstring javaOldFilePath,
+/**
+ *
+ * @param env               默认虚拟机传递过来
+ * @param jcls              默认虚拟机传递过来
+ * ========================mapping to  java native define params
+ * @param javaOldFilePath   输入文件路径
+ * @param javaPatchFilePath patch file path
+ * @param javaOutFilePath
+ * @return
+ */
+static jboolean BsdiffPatcher_nativeApplyPatch(JNIEnv *env, jclass jcls, jstring javaOldFilePath,
                                                jstring javaPatchFilePath, jstring javaOutFilePath) {
+
+
+    //local reference
+//    jclass stringCls = env->FindClass("java/lang/String");
+//    env->DeleteLocalRef(stringCls);
+    //[jbyte
+//    jobject defaultCls = getInstance(env, stringCls);
+//    byte bytes[]
+
+
 
     const char *oldFilePath = env->GetStringUTFChars(javaOldFilePath, NULL);
     const char *patchFilePath = env->GetStringUTFChars(javaPatchFilePath, NULL);
@@ -64,8 +84,8 @@ static JNINativeMethod gBsdiffPatcherMethods[] = {
  * register java native method
  *
  * @param env
- * @param classPathName
- * @param nativeMethods
+ * @param classPathName   mapping to java class
+ * @param nativeMethods   native method define
  * @param nMethods
  * @return
  */
@@ -73,8 +93,7 @@ static int jniRegisterNativeMethods(JNIEnv *env,
                                     const char *classPathName,
                                     JNINativeMethod *nativeMethods,
                                     jint nMethods) {
-    jclass clazz;
-    clazz = env->FindClass(classPathName);
+    jclass clazz = env->FindClass(classPathName);
     if (clazz == NULL) {
         LOGW("Native registration unable to find class '%s'", classPathName);
         return JNI_FALSE;
@@ -94,7 +113,8 @@ void register_com_netease_hearttouch_candywebcache_cachemanager_CourgettePatcher
 
 /**
  *
- * @param env
+ * @param env The JNIEnv provides most of the JNI functions.
+ * Your native functions all receive a JNIEnv as the first argument
  */
 void register_com_netease_hearttouch_candywebcache_cachemanager_BsdiffPatcher(JNIEnv *env) {
     jniRegisterNativeMethods(env, "com/netease/hearttouch/candywebcache/cachemanager/BsdiffPatcher",
@@ -103,6 +123,7 @@ void register_com_netease_hearttouch_candywebcache_cachemanager_BsdiffPatcher(JN
 
 /**
  * DalvikVM calls this on startup, so we can statically register all our native methods.
+ * 虚拟机在启动时调用这个方法，可以静态注册我们的Native method
  *
  * @param vm
  * @return
@@ -113,7 +134,17 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         LOGE("JavaVM::GetEnv() failed");
         abort();
     }
-//    register_com_netease_hearttouch_candywebcache_cachemanager_CourgettePatcher(env);
+//  register_com_netease_hearttouch_candywebcache_cachemanager_CourgettePatcher(env);
     register_com_netease_hearttouch_candywebcache_cachemanager_BsdiffPatcher(env);
+
     return JNI_VERSION_1_6;
+}
+
+/**
+ * DalvikJVM calls this on unload
+ * @param vm
+ * @param reserved
+ */
+void JNI_OnUnload(JavaVM *vm, void *reserved) {
+
 }
