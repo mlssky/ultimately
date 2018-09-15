@@ -1,0 +1,87 @@
+import com.android.build.gradle.internal.dsl.NdkBuildOptions
+
+apply plugin: 'com.android.library'
+
+//用于加载so
+//https://github.com/KeepSafe/ReLinker
+
+android {
+    compileSdkVersion 27
+
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+//            private String moduleName;
+//            private String cFlags;
+//            private List<String> ldLibs;
+//            private Set<String> abiFilters;
+//            private String stl;
+//            private Integer jobs;
+            //设置支持的SO库架构
+            //Android studio升级到3.1.2，ndk（v17.0)仅支持armeabi-v7a, arm64-v8a, x86, x86_64
+            abiFilters 'armeabi-v7a', 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+
+        }
+    }
+
+//    设置可执行文件为ndk-Build
+//    设置NDK_PROJECT_PATH=null
+//    设置APP_BUILD_SCRIPT参数，其值指向Android.mk文件
+//    设置NDK_APPLICATION_MK参数，其值指向Application.mk文件（如果存在的话，不存在就不会设置该参数）
+//    设置APP_ABI参数，其值为armeabi，armeabi-v7a，arm64-v8a，x86，x86_64，mips，mips64中的一个。
+//    设置NDK_ALL_ABIS参数，其值等同于APP_ABI
+//    设置NDK_DEBUG参数，表示十分是debug构建，debug含符号信息，so很大，便于调试，release移除了debug信息，小很多。其值来源于build.gradle中的debuggable值。
+//    设置APP_PLATFORM参数，一般设成和项目的最小api版本一样即可，gradle会通过它和minSdk查找出合适的值
+//    设置NDK_OUT参数，其值为obj文件产生目录，一般指向项目的build路径下的intermediates/ndkBuild/$buildType/obj目录
+//    设置NDK_LIBS_OUT参数，其值为libs参数目录，用于so的存储，一般指向项目的build路径下的intermediates/ndkBuild/$buildType/lib目录
+//    设置可选项APP_CFLAGS参数，如果不为空，则设置，其值为编译C时的一些参数
+//    设置可选项APP_CPPFLAGS参数，如果不为空，则设置，其值为编译C++时的一些参数
+//    设置可选项arguments，其值为gradle传进来的arguments参数。
+//    设置APP_SHORT_COMMANDS=false
+//    设置LOCAL_SHORT_COMMANDS=false
+//    添加-B参数
+//    添加-n参数
+
+//    https://www.colabug.com/211112.html
+    externalNativeBuild {
+//        ndkDirectory file()
+        ndkBuild {
+            // Tells Gradle to find the root ndk-build script in the same
+            // directory as the module's build.gradle file. Gradle requires this
+            // build script to add your ndk-build project as a build dependency and
+            // pull your native sources into your Android project.
+            path file('./jni/Android.mk')
+            // Tells Gradle to put outputs from external native
+            // builds in the path specified below.
+            buildStagingDirectory "./outputs/ndk-build"
+
+        }
+//        cmake{
+//
+//        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

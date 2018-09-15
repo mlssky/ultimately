@@ -14,6 +14,15 @@ class PresetResourcePlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
+
+//        presetExt{
+//            url  'http://10.242.27.37:9001/api/version_check'
+//            appID 'KaoLa'
+//            appVersion   '1.2.3'
+//            needDownload true
+//        }
+
+
         project.extensions.add("presetExt", PresetExt)
 
         project.task('presetResourceTask') {
@@ -89,7 +98,7 @@ class PresetResourcePlugin implements Plugin<Project> {
 //                            if (it.state != 1 || it.state != 3) {
 //                                throw new RuntimeException("state is " + it.state + " for " + it.resID);
 //                            }
-                            if(it.userData != null && !it.userData.equals("")){
+                            if (it.userData != null && !it.userData.equals("")) {
                                 def userData = jsonSlurper.parseText(it.userData)
                                 def domains = userData.domains
                                 webapp(name: it.resID, md5: it.fullMd5, version: it.resVersion) {
@@ -151,7 +160,7 @@ class PresetResourcePlugin implements Plugin<Project> {
 
         project.afterEvaluate {
             for (Task task : project.tasks) {
-                if(task.name.startsWith("assemble") && task.name.endsWith("Release")) {
+                if (task.name.startsWith("assemble") && task.name.endsWith("Release")) {
                     task.dependsOn 'presetResourceTask'
                 }
             }
