@@ -1,1 +1,1 @@
-include ':app', ':gradlePluginDemo', ':testlib', ':patcherjni'
+include ':app', ':gradlePluginDemo', ':patcherjni', ':jnidemo'
