@@ -37,23 +37,10 @@ static jboolean BsdiffPatcher_nativeApplyPatch(JNIEnv *env, jclass jcls, jstring
                                                jstring javaPatchFilePath, jstring javaOutFilePath) {
 
 
-    //local reference
-//    jclass stringCls = env->FindClass("java/lang/String");
-//    env->DeleteLocalRef(stringCls);
-    //[jbyte
-//    jobject defaultCls = getInstance(env, stringCls);
-//    byte bytes[]
-
-
-
     const char *oldFilePath = env->GetStringUTFChars(javaOldFilePath, NULL);
     const char *patchFilePath = env->GetStringUTFChars(javaPatchFilePath, NULL);
     const char *outFilePath = env->GetStringUTFChars(javaOutFilePath, NULL);
-
-//    env->GetObjectArrayElement()；
-
     jobjectArray a;
-
 
     char **argv = (char **) malloc(sizeof(char *) * 5);
     argv[0] = const_cast<char *>("bspatch");

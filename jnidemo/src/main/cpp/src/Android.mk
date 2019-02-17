@@ -25,6 +25,7 @@ LOCAL_SRC_FILES := $(CPP_FILE_LIST:$(LOCAL_PATH)/%=%)
 
 
 CXX11_FLAGS := -std=c++11
+#隐藏非必要函数导出
 LOCAL_CFLAGS += -fvisibility=hidden
 LOCAL_LDLIBS :=-llog
 

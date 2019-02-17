@@ -22,7 +22,12 @@ android {
 //            }
         }
         ndk {
-            abiFilters "armeabi-v7a"
+//            private String moduleName;
+//            private String cFlags;
+//            private List<String> ldLibs;
+//            private Set<String> abiFilters;
+//            private String stl;
+            abiFilters "armeabi-v7a","x86"
         }
     }
 
@@ -32,12 +37,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //ndk   
     externalNativeBuild {
 //        cmake {
 //            path "CMakeLists.txt"
 //        }
         ndkBuild {
+            // Tells Gradle to find the root ndk-build script in the same
+            // directory as the module's build.gradle file. Gradle requires this
+            // build script to add your ndk-build project as a build dependency and
+            // pull your native sources into your Android project.
             path file('src/main/cpp/src/Android.mk')
+            // Tells Gradle to put outputs from external native
+            // builds in the path specified below.
+            // Tells Gradle to put outputs from external native
+            // builds in the path specified below.
+             //默认使用.externalNativeBuild
+//            buildStagingDirectory "./outputs/ndk-build"
         }
     }
 }

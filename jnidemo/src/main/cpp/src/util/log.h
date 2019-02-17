@@ -18,12 +18,9 @@
 #define LOG_H_
 
 #include <android/log.h>
+#include "JNIHelpers.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-// ---------------------------------------------------------------------
+BEGIN_C_DECLS
 
 /*
  * Normally we strip ALOGV (VERBOSE messages) from release builds.
@@ -281,8 +278,7 @@ extern "C" {
     __android_log_assert(cond, tag, \
         __android_second(0, ## fmt, NULL) __android_rest(fmt))
 
-#ifdef __cplusplus
-}
-#endif
+
+END_C_DECLS
 
 #endif /* LOG_H_ */
