@@ -10,9 +10,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent=new Intent();
-        intent.setClass(this, tv.yixia.testj.MainActivity.class);
-        startActivity(intent);
+//        Intent intent=new Intent();
+//        intent.setClass(this, tv.yixia.testj.MainActivity.class);
+//        startActivity(intent);
 
     }
 }

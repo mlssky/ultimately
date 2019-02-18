@@ -27,7 +27,7 @@ android {
 //            private List<String> ldLibs;
 //            private Set<String> abiFilters;
 //            private String stl;
-            abiFilters "armeabi-v7a","x86"
+            abiFilters "armeabi-v7a"
         }
     }
 
