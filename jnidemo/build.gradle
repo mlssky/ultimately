@@ -68,4 +68,7 @@ repositories {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation("com.android.support:support-v4:27.1.1")
+
+
+    compile 'com.wx.android.common:common:1.0.4'
 }
