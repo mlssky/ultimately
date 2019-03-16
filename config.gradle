@@ -1,19 +1,32 @@
+Properties properties = new Properties()
+InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+properties.load(inputStream)
+//读取字段
+def debug = properties.getProperty('devMode')
+
 ext {
+
+    //project build config
     android = [
 
-            buildToolsVersion: "27.0.3",
+            buildToolsVersion: "28.0.1",
+            compileSdkVersion: 28,
 
-            compileSdkVersion: 27,
             minSdkVersion    : 15,
-            targetSdkVersion : 27,
-            versionCode      : 1,
-            versionName      : "1.0",
+            targetSdkVersion : 28,
+
+            applicationId    : "com.xcleans",
             versionCode      : 1000,
-            versionName      : "1.0.0",
+            //majorVersionCode:subVersionCode:revesionCode
+            versionName      : "1.0.0"
     ]
 
-    extSdk = [
+    //third lib config
+    thirdSDK = [
+            supportV4: "com.android.support:support-v4:28.+",
+            appcompat: 'com.android.support:appcompat-v7:28.+',
 
-
+            okhttp   : "com.squareup.okhttp3:okhttp:3.13.1",
+            gson     : "com.google.code.gson:gson:2.8.2",
     ]
 }

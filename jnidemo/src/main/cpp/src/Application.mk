@@ -24,5 +24,6 @@ APP_ABI := armeabi-v7a x86
 APP_OPTIM := release
 
 #默认情况下，NDK构建系统为Android系统提供的最小C++运行时库
-APP_STL := gnustl_static
+#gnustl_static
+APP_STL := c++_static
 

@@ -17,7 +17,7 @@ package com.xcleans.uninstall;
 
 import android.content.Context;
 
-import com.xcleans.base.util.AppUtils;
+import com.xcleans.common.util.AppUtils;
 
 /**
  * 卸载

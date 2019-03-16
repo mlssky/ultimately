@@ -1,33 +1,36 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         applicationId "tv.yixia.testj"
-        minSdkVersion 16
-        targetSdkVersion 28
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
         externalNativeBuild {
 //            cmake {
 //                cppFlags "-frtti -fexceptions"
 //                abiFilters 'armeabi-v7a'//, 'armeabi-v7a', 'x86_64', 'arm64-v8a'
 //                arguments "-DANDROID_STL=gnustl_static"
 //            }
+
 //            ndk{
 //                cFlags "-frtti -fexceptions"
 //                abiFilters 'armeabi-v7a'
 //                stl 'gnustl_static'
 //            }
         }
+        ////设置支持的SO库架构
         ndk {
 //            private String moduleName;
 //            private String cFlags;
 //            private List<String> ldLibs;
 //            private Set<String> abiFilters;
 //            private String stl;
-            abiFilters "armeabi-v7a"
+            //Android studio升级到3.1.2，ndk（v17.0)仅支持armeabi-v7a, arm64-v8a, x86, x86_64
+//            abiFilters "armeabi-v7a"
         }
     }
 
@@ -53,7 +56,7 @@ android {
             // builds in the path specified below.
             // Tells Gradle to put outputs from external native
             // builds in the path specified below.
-             //默认使用.externalNativeBuild
+            //默认使用.externalNativeBuild
 //            buildStagingDirectory "./outputs/ndk-build"
         }
     }
@@ -67,8 +70,7 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation("com.android.support:support-v4:27.1.1")
+    implementation rootProject.ext.thirdSDK.supportV4
 
-
-    compile 'com.wx.android.common:common:1.0.4'
+    implementation project(path: ':common')
 }
