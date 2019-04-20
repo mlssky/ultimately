@@ -4,3 +4,6 @@
 [submodule "thirdLib/HermesEventBus"]
 	path = thirdLib/HermesEventBus
 	url = https://github.com/Xiaofei-it/HermesEventBus.git
+[submodule "thirdLib/java-design-patterns"]
+	path = thirdLib/java-design-patterns
+	url = https://github.com/iluwatar/java-design-patterns.git
