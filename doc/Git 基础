@@ -1,2 +1,17 @@
+git 基本命令
+
+
+#clone 工程包含submodule
+git clone --recursive gitRepoUrl
+#用来初始化本地配置文件
+git submodule init
+#抓取所有数据并检出父项目中列出的合适的提交
+git submodule update
+#如果想要在子模块中查看新工作，可以进入到目录中运行 git fetch 与 git merge，
+#合并上游分支来更新本地代码。
+
+#抓取子模块并更新
+git submodule update --remote
+
 Git 工具 - 子模块
 https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97

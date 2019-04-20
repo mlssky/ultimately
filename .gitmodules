@@ -1,0 +1,6 @@
+[submodule "thirdLib/Hermes"]
+	path = thirdLib/Hermes
+	url = https://github.com/Xiaofei-it/Hermes.git
+[submodule "thirdLib/HermesEventBus"]
+	path = thirdLib/HermesEventBus
+	url = https://github.com/Xiaofei-it/HermesEventBus.git
