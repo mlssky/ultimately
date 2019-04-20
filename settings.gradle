@@ -1,7 +1,5 @@
-include ':app', ':common',
-        ':gradlePluginDemo',
-        ':patcherjni',
-        ':jnidemo'
-
-include 'hermes'
-project(':hermes').projectDir = new File(settingsDir, './Hermes/hermes')
+include ':app',
+        ':common',
+        ':basic:jnidemo',
+        ':basic:native',
+        ':basic:patcherjni'

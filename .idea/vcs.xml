@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Hermes" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/HermesEventBus" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/doc/ndk/ReLinker" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/java-design-patterns" vcs="Git" />
   </component>
 </project>

@@ -13,5 +13,11 @@ public class MainActivity extends Activity {
 //        intent.setClass(this, tv.yixia.testj.MainActivity.class);
 //        startActivity(intent);
 
+//        Os.lstat()
+//        Os.chmod(, );stat(mFile.getPath());
+
+//        bindService(, , )
+
+
     }
 }
