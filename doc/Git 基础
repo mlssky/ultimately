@@ -1,5 +1,28 @@
 git 基本命令
 
+* 1.查看到未传送到远程代码库的提交次数
+git status
+
+* 2.查看到未传送到远程代码库的提交描述/说明
+git cherry -v
+
+* 3查看到未传送到远程代码库的提交详情
+Git log master ^origin/master
+
+* 4.clone project
+  git clone
+  包含submodule
+  git clone --recursive gitRepoUrl
+
+* 5.切换分支
+  git checkout tag
+  git branch
+  git tag
+* 8.撤销
+git reset —hard commit_id
+git reset —hard 撤销提交到指定
+* 9.查看服务器信息
+git remote show origin
 
 #clone 工程包含submodule
 git clone --recursive gitRepoUrl
@@ -9,9 +32,7 @@ git submodule init
 git submodule update
 #如果想要在子模块中查看新工作，可以进入到目录中运行 git fetch 与 git merge，
 #合并上游分支来更新本地代码。
-
 #抓取子模块并更新
 git submodule update --remote
-
 Git 工具 - 子模块
 https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
