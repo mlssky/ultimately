@@ -12,8 +12,8 @@ ext {
             buildToolsVersion: "28.0.1",
             compileSdkVersion: 28,
 
-            minSdkVersion    : 15,
-            targetSdkVersion : 28,
+            minSdkVersion    : 18,
+            targetSdkVersion : 26,
 
             applicationId    : "com.xcleans",
             versionCode      : 1000,
@@ -23,8 +23,8 @@ ext {
 
     //third lib config
     thirdSDK = [
-            supportV4: "com.android.support:support-v4:28.+",
-            appcompat: 'com.android.support:appcompat-v7:28.+',
+            supportV4: "com.android.support:support-v4:28.0.0",
+            appcompat: 'com.android.support:appcompat-v7:28.0.0',
 
             okhttp   : "com.squareup.okhttp3:okhttp:3.13.1",
             gson     : "com.google.code.gson:gson:2.8.2",

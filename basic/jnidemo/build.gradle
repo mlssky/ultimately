@@ -41,7 +41,7 @@ android {
         }
     }
 
-    //ndk   
+//    //ndk
     externalNativeBuild {
 //        cmake {
 //            path "CMakeLists.txt"

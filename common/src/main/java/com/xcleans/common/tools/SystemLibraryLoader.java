@@ -45,6 +45,11 @@ final class SystemLibraryLoader implements ReLinker.LibraryLoader {
         return mappedLibraryName.substring(3, mappedLibraryName.length() - 3);
     }
 
+    /**
+     * 1.判断当前系统是64/32
+     *
+     * @return
+     */
     @Override
     public String[] supportedAbis() {
         if (Build.VERSION.SDK_INT >= 21 && Build.SUPPORTED_ABIS.length > 0) {

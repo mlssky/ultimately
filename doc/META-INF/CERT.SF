@@ -1,0 +1,64 @@
+Signature-Version: 1.0
+Created-By: 1.0 (Android)
+//SHA1-Digest-Manifest则记录了整个MANIFEST.MF文件的数据摘要的Base64编码
+SHA1-Digest-Manifest: 16N6kIk9eJN21weLRF84OgEIqk0=
+//使用V2 sign
+X-Android-APK-Signed: 2
+
+Name: AndroidManifest.xml
+SHA1-Digest: gBnLpaukfNN+gQeeIHK/3Gef5DA=
+
+Name: classes.dex
+SHA1-Digest: PXg4LwC1ken5XiFi0rgtB5OO+u0=
+
+Name: res/drawable-anydpi-v21/ic_launcher_background.xml
+SHA1-Digest: ocWb6Ox/TAVgd0U0RaLQDjYFDN0=
+
+Name: res/drawable-v24/$ic_launcher_foreground__0.xml
+SHA1-Digest: b/1APRIk9aYHBkAefEMGZf7RCtY=
+
+Name: res/drawable-v24/ic_launcher_foreground.xml
+SHA1-Digest: DmLKpOxXItdlyHPgzqVfMcDpf+U=
+
+Name: res/drawable-xxhdpi-v4/ic_launcher_background.png
+SHA1-Digest: kEVbtWDCaLoMy9RAhNYfI+F4RNw=
+
+Name: res/mipmap-anydpi-v26/ic_launcher.xml
+SHA1-Digest: BFcr4HIS7eqNfMzdltuqs+6XLfE=
+
+Name: res/mipmap-anydpi-v26/ic_launcher_round.xml
+SHA1-Digest: 1NhMGhuL1AJn+EyoXPySHWkOGUQ=
+
+Name: res/mipmap-hdpi-v4/ic_launcher.png
+SHA1-Digest: L8RpX5x8pChJbucqml+hMt9D9CQ=
+
+Name: res/mipmap-hdpi-v4/ic_launcher_round.png
+SHA1-Digest: I5Cm9mLYVtm3WuN7n8MGxWGg5uI=
+
+Name: res/mipmap-mdpi-v4/ic_launcher.png
+SHA1-Digest: wR6jCvyfdHG4N2ySGLDob0Z2Efk=
+
+Name: res/mipmap-mdpi-v4/ic_launcher_round.png
+SHA1-Digest: KhU3sBdlZvF//f07Gh+1syxxAQg=
+
+Name: res/mipmap-xhdpi-v4/ic_launcher.png
+SHA1-Digest: hXNyFGBi/P8iCnxtRzE8l+0DQjc=
+
+Name: res/mipmap-xhdpi-v4/ic_launcher_round.png
+SHA1-Digest: tH4CpqMnqcnq9YDHqsA6tFOp7C0=
+
+Name: res/mipmap-xxhdpi-v4/ic_launcher.png
+SHA1-Digest: qbP7gd05mkMZFwz2yP3j23x/ZFA=
+
+Name: res/mipmap-xxhdpi-v4/ic_launcher_round.png
+SHA1-Digest: vZKrS6PA/dGxj/iIMAuK6cUyFA0=
+
+Name: res/mipmap-xxxhdpi-v4/ic_launcher.png
+SHA1-Digest: B2Q5EkVoCIStjgCu6jsh+h3v+Xk=
+
+Name: res/mipmap-xxxhdpi-v4/ic_launcher_round.png
+SHA1-Digest: S+vEsz5S9fsZ/XbEWGm4SyrCZ54=
+
+Name: resources.arsc
+SHA1-Digest: jePj3ZSxu1743twQs2y6Z2TpK8k=
+

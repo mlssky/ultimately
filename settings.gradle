@@ -1,4 +1,6 @@
-include ':app',
+include ':app', ':basiJava',
+        ':basic:hotfix',
+        ':dynamic_feature',
         ':common',
         ':basic:jnidemo',
         ':basic:native',

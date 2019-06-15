@@ -2,8 +2,14 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/thirdLib/ArgusAPM" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/thirdLib/FreeReflection" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdLib/Hermes" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdLib/HermesEventBus" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/thirdLib/JAndFix" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/thirdLib/atlas" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/thirdLib/booster" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/thirdLib/epic" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdLib/java-design-patterns" vcs="Git" />
   </component>
 </project>

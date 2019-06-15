@@ -1,0 +1,34 @@
+PathClassloader
+native
+instance run
+
+
+
+
+
+
+
+
+
+底层替换：
+在原有的类的基础上替换掉原有的额方法(类的method,filed变动)，ArtMethod
+
+
+
+
+
+1. static方法
+
+2. private方法
+
+3. 构造函数
+
+2. clazz->virtualMethods
+
+1. 虚函数=override方法?
+
+概括一下就是如果以上方法中直接引用到的类（第一层级关系，不会进行递归搜索,Multidex 分包时也是只判断的第一层级关系）和
+clazz都在同一个dex中的话，
+那么这个类就会被打上CLASS_ISPREVERIFIED：
+
+1.防止被打上CLASS_ISPREVERIFIED(已经验证flag),需要应用在另一个dex的类

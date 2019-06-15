@@ -40,6 +40,10 @@ static JNINativeMethod gMethods[2] = {
 };
 
 int registerTestLibWayNativeMethod(JNIEnv *env) {
+
+
+//  memcpy()
+
   jclass localClsRef;
   if ((localClsRef = env->FindClass(JNI_PACKAGE "/MainActivity")) != NULL) {
     sMainActivityClassInfo.cls = reinterpret_cast<jclass>(env->NewGlobalRef(localClsRef));

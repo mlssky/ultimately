@@ -7,3 +7,21 @@
 [submodule "thirdLib/java-design-patterns"]
 	path = thirdLib/java-design-patterns
 	url = https://github.com/iluwatar/java-design-patterns.git
+[submodule "thirdLib/booster"]
+	path = thirdLib/booster
+	url = https://github.com/didi/booster
+[submodule "thirdLib/ArgusAPM"]
+	path = thirdLib/ArgusAPM
+	url = https://github.com/Qihoo360/ArgusAPM.git
+[submodule "thirdLib/JAndFix"]
+	path = thirdLib/JAndFix
+	url = https://github.com/qiuba/JAndFix.git
+[submodule "thirdLib/epic"]
+	path = thirdLib/epic
+	url = https://github.com/tiann/epic.git
+[submodule "thirdLib/FreeReflection"]
+	path = thirdLib/FreeReflection
+	url = https://github.com/tiann/FreeReflection.git
+[submodule "thirdLib/atlas"]
+	path = thirdLib/atlas
+	url = https://github.com/alibaba/atlas.git

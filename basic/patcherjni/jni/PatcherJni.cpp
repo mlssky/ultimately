@@ -111,7 +111,8 @@ void register_com_netease_hearttouch_candywebcache_cachemanager_BsdiffPatcher(JN
 /**
  * DalvikVM calls this on startup, so we can statically register all our native methods.
  * 虚拟机在启动时调用这个方法，可以静态注册我们的Native method
- *
+ * ART：System#loadlibray(String) 会触发 JNI_OnLoad调用
+ * Dalvik:
  * @param vm
  * @return
  */
