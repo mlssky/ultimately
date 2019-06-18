@@ -996,10 +996,13 @@ static bool loadAllClasses(DvmDex* pDvmDex)
 /*
  * Verify and/or optimize all classes that were successfully loaded from
  * this DEX file.
+ * 验证和优化已经从dex加载成功的类
  */
-static void verifyAndOptimizeClasses(DexFile* pDexFile, bool doVerify,
+static void verifyAndOptimizeClasses(DexFile* pDexFile,
+    bool doVerify,
     bool doOpt)
 {
+
     u4 count = pDexFile->pHeader->classDefsSize;
     u4 idx;
 
@@ -1007,7 +1010,7 @@ static void verifyAndOptimizeClasses(DexFile* pDexFile, bool doVerify,
         const DexClassDef* pClassDef;
         const char* classDescriptor;
         ClassObject* clazz;
-
+        //
         pClassDef = dexGetClassDef(pDexFile, idx);
         classDescriptor = dexStringByTypeIdx(pDexFile, pClassDef->classIdx);
 

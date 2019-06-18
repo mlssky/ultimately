@@ -21,27 +21,93 @@ import java.util.SortedSet;
 
 public class BasicClass {
 
-    public static void main(String[] args) {
 
-
-        String s = "abbabcdefg";
-        s.contains("d");
-        //abb
-        //13
-        int n = s.length(), ans = 0;
-        Map<Character, Integer> map = new HashMap<>();// current index of character
-        // try to extend the range [i, j]
-        for (int j = 0, i = 0; j < n; j++) {  //[i,j)  //i-3
-            if (map.containsKey(s.charAt(j))) {
-                //窗口移到下一个位置
-                i = Math.max(map.get(s.charAt(j)), i);
-            }//
-            ans = Math.max(ans, j - i + 1);//记录当前有效字符串的长度
-            map.put(s.charAt(j), j + 1);
+    public static int lengthOfLongestSubstring(String s) {
+        //滑动窗口算法，
+        //abcdbfg
+        int maxLen = 0;
+        //记录当前已经遍历到的字符的位置
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (int i = 0, start = 0, n = s.length(); i < n; i++) {
+            if (map.containsKey(s.charAt(i))) {
+                //小于start的已经遍历过了
+                start = Math.max(map.get(s.charAt(i)), start);
+            }
+            maxLen = Math.max(maxLen, i - start + 1);
+            map.put(s.charAt(i), i + 1);
         }
-        System.out.println("i=" + ans);
+
+        return maxLen;
+    }
 
 
+    public static class ListNode {
+        int      val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     */
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode head = null, las = null;
+        int last = 0;
+        //从低位开始加
+        do {
+            int current = last + (l1 != null ? l1.val : 0) + (l2 != null ? l2.val : 0);
+            last = current / 10;
+            if (head == null) {
+                head = new ListNode(current % 10);
+                las = head;
+            } else {
+                ListNode tmp = new ListNode(current % 10);
+                las.next = tmp;
+                las = tmp;
+            }
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        } while (l1 != null || l2 != null || last > 0);
+        return head;
+    }
+
+
+    public static void main(String[] args) {
+        //708
+//        (2 -> 4 -> 3) + (5 -> 6 -> 4)
+        ListNode node1 = new ListNode(5);
+//        node1.next = new ListNode(4);
+//        node1.next.next = new ListNode(3);
+
+        ListNode node2 = new ListNode(5);
+//        node2.next = new ListNode(6);
+//        node2.next.next = new ListNode(4);
+
+        //807
+        //708
+
+        ListNode result = addTwoNumbers(node1, node2);
+        do {
+            System.out.println(result.val);
+            result = result.next;
+        } while (result != null);
+
+//        System.out.println(lengthOfLongestSubstring("abc"));
+//        System.out.println(lengthOfLongestSubstring("abcdeefc"));
+//        System.out.println(lengthOfLongestSubstring("abcdeeabcdfgij"));
+//        System.out.println(lengthOfLongestSubstring("abcdbfg"));
     }
 
 
