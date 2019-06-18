@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -20,8 +22,6 @@ android {
         targetCompatibility = '1.8'
     }
 
-
-    dynamicFeatures = [":dynamic_feature"]
 
 
 }

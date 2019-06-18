@@ -9,16 +9,18 @@ ext {
     //project build config
     android = [
 
-            buildToolsVersion: "28.0.1",
-            compileSdkVersion: 28,
+            buildToolsVersion         : "28.0.3",
+            compileSdkVersion         : 28,
 
-            minSdkVersion    : 18,
-            targetSdkVersion : 26,
+            minSdkVersion             : 16,
+            targetSdkVersion          : 28,
 
-            applicationId    : "com.xcleans",
-            versionCode      : 1000,
+            applicationId             : "com.xcleans",
+            versionCode               : 1000,
             //majorVersionCode:subVersionCode:revesionCode
-            versionName      : "1.0.0"
+            versionName               : "1.0.0",
+            sourceCompatibilityVersion: JavaVersion.VERSION_1_8,
+            targetCompatibilityVersion: JavaVersion.VERSION_1_8
     ]
 
     //third lib config

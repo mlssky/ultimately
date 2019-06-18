@@ -1,0 +1,4 @@
+1.v1 签名 jarsign
+2.v2 签名 apksign andorid7.0 引入
+         X-Android-APK-Signed: 2
+3.v3 签名
