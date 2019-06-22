@@ -8,9 +8,9 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        ndk {
-            abiFilters 'armeabi-v7a'
-        }
+//        ndk {
+//            abiFilters 'armeabi-v7a'
+//        }
     }
 
 //    设置可执行文件为ndk-Build
@@ -32,22 +32,22 @@ android {
 //    添加-n参数
 
 //    https://www.colabug.com/211112.html
-    externalNativeBuild {
-//        ndkDirectory file()
-        ndkBuild {
-            // Tells Gradle to find the root ndk-build script in the same
-            // directory as the module's build.gradle file. Gradle requires this
-            // build script to add your ndk-build project as a build dependency and
-            // pull your native sources into your Android project.
-            path file('./jni/Android.mk')
-            // Tells Gradle to put outputs from external native
-            // builds in the path specified below.
-            buildStagingDirectory "./outputs/ndk-build"
-        }
-//        cmake{
-//
+//    externalNativeBuild {
+////        ndkDirectory file()
+//        ndkBuild {
+//            // Tells Gradle to find the root ndk-build script in the same
+//            // directory as the module's build.gradle file. Gradle requires this
+//            // build script to add your ndk-build project as a build dependency and
+//            // pull your native sources into your Android project.
+//            path file('./jni/Android.mk')
+//            // Tells Gradle to put outputs from external native
+//            // builds in the path specified below.
+//            buildStagingDirectory "./outputs/ndk-build"
 //        }
-    }
+////        cmake{
+////
+////        }
+//    }
 
     buildTypes {
         release {

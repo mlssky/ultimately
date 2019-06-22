@@ -1,5 +1,7 @@
 package com.xcleans.hotfix.util;
 
+import com.xcleans.hotfix.manager.PatchException;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,6 +10,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 import java.util.Arrays;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public final class FileUtils {
 
@@ -110,7 +114,30 @@ public final class FileUtils {
                     }
                 }
             }
+        }
+    }
 
+
+    ///////////////////////////////////////////////////////////////////////////
+    // zip file
+    ///////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @param zipFile
+     * @param zipEntry
+     * @param outFilePath
+     * @throws PatchException
+     */
+    public static void unzipToFile(ZipFile zipFile, ZipEntry zipEntry, String outFilePath) throws IOException {
+        InputStream in = null;
+        FileOutputStream out = null;
+        try {
+            in = zipFile.getInputStream(zipEntry);
+            out = new FileOutputStream(outFilePath);
+            FileUtils.copy(in, out);
+        } finally {
+            IoUtils.closeSilent(in);
+            IoUtils.closeSilent(out);
         }
     }
 }

@@ -1,2 +1,18 @@
 <manifest package="tv.yixia.bobo.hotfix"
-          xmlns:android="http://schemas.android.com/apk/res/android"/>
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:name="com.xcleans.SophixStubApplication">
+        <meta-data
+            android:name="com.taobao.android.hotfix.IDSECRET"
+            android:value="App ID" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.APPSECRET"
+            android:value="App Secret" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.RSASECRET"
+            android:value="RSA密钥" />
+    </application>
+</manifest>
+
+

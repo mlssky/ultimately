@@ -1,5 +1,8 @@
-package com.xcleans.hotfix;
+package com.xcleans.hotfix.manager;
 
+/**
+ * from  com.taobao.sophix.a.b
+ */
 public class PatchException extends Exception {
     private int errCode;
 

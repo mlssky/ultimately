@@ -55,7 +55,7 @@ LOCAL_CFLAGS += -fvisibility=hidden
 CXX11_FLAGS := -std=c++11
 
 #设置添加系统库
-LOCAL_LDLIBS :=-llog
+LOCAL_LDLIBS +=-L$(SYSROOT)/usr/lib -llog
 
 #设置链接到本模块的静态库
 #LOCAL_STATIC_LIBRARIES:=

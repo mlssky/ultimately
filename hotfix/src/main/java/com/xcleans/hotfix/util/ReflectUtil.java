@@ -71,4 +71,12 @@ public class ReflectUtil {
         }
         throw new Exception("Field " + fieldName + " not found in " + obj.getClass());
     }
+
+    public static Field getDeclaredField(Class clz, String var1) throws NoSuchFieldException {
+        Field field = clz.getDeclaredField(var1);
+        if (!field.isAccessible()) {
+            field.setAccessible(true);
+        }
+        return field;
+    }
 }

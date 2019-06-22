@@ -53,10 +53,11 @@
  * on the verifier to do the checks for us.
  *
  * Does not initialize the class.
- *
+ *****************************************************************************
  * "fromUnverifiedConstant" should only be set if this call is the direct
  * result of executing a "const-class" or "instance-of" instruction, which
  * use class constants not resolved by the bytecode verifier.
+ * **********************************************************************
  *
  * Returns NULL with an exception raised on failure.
  */

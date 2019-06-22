@@ -2,43 +2,33 @@ package com.xcleans;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraManager;
 import android.media.ImageReader;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+//import com.xcleans.hotfix.GlobalCfg;
+//import com.xcleans.hotfix.manager.PatchException;
+//import com.xcleans.hotfix.patch.ResourceManager;
+
+import java.io.File;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.LinkedList;
+import java.util.List;
+
+import static com.xcleans.Reflection.getFieldValue;
+import static com.xcleans.Reflection.getStaticFieldValue;
+import static com.xcleans.Reflection.invokeMethod;
 
 public class MainActivity extends Activity {
-
-    private static final String        TAG = "MMMMM";
-    private              CameraManager cameraManager;
-    String cameraId = null;
-    private ImageReader mImageReader;
-    private int         mRoate;
-
-    private void requestPermissionsV2(String[] strArr) {
-        try {
-//            Intent intent = new Intent("huawei.intent.action.REQUEST_PERMISSIONS");
-//            intent.setPackage("com.huawei.systemmanager");
-//            intent.putExtra("KEY_HW_PERMISSION_ARRAY", strArr);
-//            intent.putExtra("KEY_HW_PERMISSION_PKG", getPackageName());
-
-            Intent intent = new Intent("com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
-            intent.setPackage("com.android.packageinstaller");
-            try {
-                ActivityCompat.requestPermissions(this, strArr, 1357);
-                startActivityForResult(intent, 1357);
-                return;
-            } catch (Exception e) {
-            }
-        } catch (Exception e2) {
-        }
-    }
 
 
     @Override
@@ -47,167 +37,105 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main_actiivty);
 
 
-        ViewGroup viewGroup = new FrameLayout(this, null);
+        //Landroid/app/ActivityThread$GcIdler
 
-        FrameLayout c1 = new FrameLayout(this, null);
-        viewGroup.addView(c1);
+        a("android.app.ActivityThread$GcIdler");
 
-        FrameLayout c2 = new FrameLayout(this, null);
-        c2.addView(new FrameLayout(this, null));//c3
-        c1.addView(c2);
+        Class a = a("android.app.ContextImpl");
+        Class b = a("android.app.ActivityThread");
 
+        try {
 
-        LinkedList<View> views = new LinkedList<>();
-        views.offer(viewGroup);
-
-        int h = 1;
-        while (!views.isEmpty()) {
-            for (int i = 0, n = views.size(); i < n; i++) {
-                View top = views.poll();
-                Log.d(TAG, "[[[" + top.toString());
-                if (top instanceof ViewGroup && ((ViewGroup) top).getChildCount() >= 0) {
-                    for (int j = 0; j < ((ViewGroup) top).getChildCount(); j++) {
-                        views.offer(((ViewGroup) top).getChildAt(j));
-                    }
+            Object thread = null;
+            try {
+                Class<?> c = Class.forName("android.app.ActivityThread");
+                //public static ActivityThread currentActivityThread()
+                Method currentActivityThread = c.getDeclaredMethod("currentActivityThread");
+                currentActivityThread.setAccessible(true);
+                thread = currentActivityThread.invoke(null);
+            } catch (final Throwable t1) {
+                try {
+                    Class<?> c = Class.forName("android.app.ActivityThread");
+                    thread = getStaticFieldValue(c, "sCurrentActivityThread");
+                } catch (final Throwable t2) {
                 }
             }
-            h++;
+
+            getHandler(thread);
+
+            getDeclaredField(a, "mOuterContext").set(this.getApplication().getBaseContext(), this.getApplication());
+            Object var2 = getDeclaredField(a, "mPackageInfo").get(this.getApplication().getBaseContext());
+            getDeclaredField(var2.getClass(), "mApplication").set(var2, this.getApplication());
+            Object var3 = getDeclaredField(var2.getClass(), "mActivityThread").get(var2);
+            getDeclaredField(var3.getClass(), "mInitialApplication").set(var3, this.getApplication());
+            List var4 = (List) getDeclaredField(var3.getClass(), "mAllApplications").get(var3);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
         }
 
-        Log.e(TAG, h + "====");
+    }
 
-//        Camera sl;
-//
-//        CameraCharacteristics cameraCharacteristics = null;
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            cameraManager = (CameraManager) this.getSystemService(Context.CAMERA_SERVICE);
-//            try {
-//                String[] camIdList = cameraManager != null ? cameraManager.getCameraIdList() : new String[0];
-//
-//                for (int i = 0, n = camIdList.length; i < n; i++) {
-//
-//                    cameraCharacteristics = cameraManager.getCameraCharacteristics(camIdList[i]);
-//                    //如果是前置摄像头
-//                    if (cameraCharacteristics.get(CameraCharacteristics.LENS_FACING) == CameraCharacteristics.LENS_FACING_BACK) {
-//                        cameraId = camIdList[i];
-//                        mRoate = cameraCharacteristics.get(CameraCharacteristics.SENSOR_ORIENTATION);
-//                        break;
-//                    }
-//                }
-//            } catch (CameraAccessException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        if (cameraId != null) {
-//            StreamConfigurationMap streamConfigurationMap = null;
-//            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-//                streamConfigurationMap = cameraCharacteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
-//                Size[] sizes = streamConfigurationMap.getOutputSizes(SurfaceHolder.class);
-//                //设置预览大小
-//                Size mPreviewSize = sizes[0];
-//                //imageReader初始化
-//                mImageReader = ImageReader.newInstance(mPreviewSize.getWidth(), mPreviewSize.getHeight(), ImageFormat.JPEG, 2);
-//
-//                mImageReader.setOnImageAvailableListener(reader -> {
-//
-//                    Image image = reader.acquireNextImage();
-//                    int format = image.getFormat();
-//                    Image.Plane[] planes = image.getPlanes();
-//                    ByteBuffer bb = planes[0].getBuffer();
-//                    byte[] data = new byte[bb.remaining()];
-//                    bb.get(data);
-//                    image.close();
-//                }, null);
-//
-//                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-//                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 200);
-//                    // TODO: Consider calling
-//                    //    ActivityCompat#requestPermissions
-//                    // here to request the missing permissions, and then overriding
-//                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//                    //                                          int[] grantResults)
-//                    // to handle the case where the user grants the permission. See the documentation
-//                    // for ActivityCompat#requestPermissions for more details.
-//                    return;
-//                }
-//            }
-//
-//        }
-//
-//        SurfaceView surfaceView = findViewById(R.id.tt);
-//        SurfaceHolder surfaceHolder = surfaceView.getHolder();
-//        surfaceHolder.addCallback(new SurfaceHolder.Callback() {
-//            private CaptureRequest.Builder mPreviewBuilder;
-//
-//            @SuppressLint("MissingPermission")
-//            @Override
-//            public void surfaceCreated(SurfaceHolder holder) {
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    try {
-//                        cameraManager.openCamera(cameraId, new CameraDevice.StateCallback() {
-//                            @Override
-//                            public void onOpened(@NonNull CameraDevice camera) {
-//
-//                                Surface surface = holder.getSurface();
-//                                try {
-//                                    // 设置捕获请求为预览，这里还有拍照啊，录像等
-//                                    mPreviewBuilder = camera.createCaptureRequest(CameraDevice.TEMPLATE_RECORD);
-//                                    mPreviewBuilder.addTarget(surface);
-//                                    mPreviewBuilder.addTarget(mImageReader.getSurface());
-//
-//                                    camera.createCaptureSession(Arrays.asList(surface, mImageReader.getSurface()),
-//                                            new CameraCaptureSession.StateCallback() {
-//
-//                                        @Override
-//                                        public void onConfigured(@NonNull CameraCaptureSession session) {
-//                                            try {
-//                                                session.setRepeatingRequest(mPreviewBuilder.build(), null, null);
-//                                            } catch (CameraAccessException e) {
-//                                                e.printStackTrace();
-//                                            }
-//                                        }
-//
-//                                        @Override
-//                                        public void onConfigureFailed(@NonNull CameraCaptureSession session) {
-//
-//                                        }
-//                                    }, null);
-//                                } catch (CameraAccessException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onDisconnected(@NonNull CameraDevice camera) {
-//
-//                            }
-//
-//                            @Override
-//                            public void onError(@NonNull CameraDevice camera, int error) {
-//
-//                            }
-//                        }, null);
-//                    } catch (CameraAccessException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//            }
-//
-//            @Override
-//            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-//
-//            }
-//
-//            @Override
-//            public void surfaceDestroyed(SurfaceHolder holder) {
-//
-//            }
-//        });
 
-//        requestPermissionsV2(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE});
+    /**
+     * 遍历所有类
+     *
+     * @param obj
+     * @param fieldName
+     * @return
+     * @throws
+     */
+    public static Field getDeclaredField(Object obj, String fieldName) throws Exception {
+        Class cls = obj.getClass();
+        while (cls != null) {
+            try {
+                Field field = cls.getDeclaredField(fieldName);
+                if (!field.isAccessible()) {
+                    field.setAccessible(true);
+                }
+                return field;
+            } catch (NoSuchFieldException var5) {
+                cls = cls.getSuperclass();
+            }
+        }
+        throw new Exception("Field " + fieldName + " not found in " + obj.getClass());
+    }
 
+    public static Field getDeclaredField(Class clz, String var1) throws NoSuchFieldException {
+        Field field = clz.getDeclaredField(var1);
+        if (!field.isAccessible()) {
+            field.setAccessible(true);
+        }
+        return field;
+    }
+
+    private static Class a(String var0) {
+        try {
+            return Class.forName(var0);
+        } catch (Exception var2) {
+            return null;
+        }
+    }
+
+
+    private static Handler getHandler(final Object thread) {
+        Handler handler;
+
+        if (null != (handler = getFieldValue(thread, "mH"))) {
+            return handler;
+        }
+
+        if (null != (handler = invokeMethod(thread, "getHandler"))) {
+            return handler;
+        }
+        try {
+            if (null != (handler = getFieldValue(thread, Class.forName("android.app.ActivityThread$H")))) {
+                return handler;
+            }
+        } catch (final Throwable e) {
+        }
+
+        return null;
     }
 }

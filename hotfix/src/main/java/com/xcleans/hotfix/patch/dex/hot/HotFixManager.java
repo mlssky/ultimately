@@ -1,10 +1,13 @@
-package com.xcleans.hotfix;
+package com.xcleans.hotfix.patch.dex.hot;
 
 import android.os.Build;
 import android.os.Build.VERSION;
 
 import com.taobao.sophix.core.dex.SophixNative;
 import com.taobao.sophix.core.dex.hot.MethodReplace;
+import com.xcleans.hotfix.GlobalCfg;
+import com.xcleans.hotfix.manager.PatchException;
+import com.xcleans.hotfix.patch.dex.IFixManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +19,8 @@ import dalvik.system.DexFile;
 
 /* compiled from: Sophix */
 public class HotFixManager implements IFixManager {
-    private static boolean a;
-
-    private PatchClassLoader mPatchClsLoader = new PatchClassLoader(GlobalCfg.b.getClassLoader());
+    private static boolean        a;
+    private        HotClassLoader mPatchClsLoader;
 
     static {
         a = true;
@@ -30,6 +32,10 @@ public class HotFixManager implements IFixManager {
             }
         }
         a = SophixNative.initHotNative();
+    }
+
+    public HotFixManager() throws PatchException {
+        mPatchClsLoader = new HotClassLoader(GlobalCfg.b.getClassLoader());
     }
 
     /**

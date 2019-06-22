@@ -1,5 +1,8 @@
 package com.xcleans.hotfix.core;
 
+/**
+ *
+ */
 public class FixNative {
 
     /**

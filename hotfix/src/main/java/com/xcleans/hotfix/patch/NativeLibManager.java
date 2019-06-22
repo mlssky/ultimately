@@ -1,4 +1,4 @@
-package com.xcleans.hotfix;
+package com.xcleans.hotfix.patch;
 
 import android.annotation.TargetApi;
 import android.content.pm.ApplicationInfo;
@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import com.taobao.sophix.b.b;
 import com.taobao.sophix.e.d;
 import com.taobao.sophix.e.g;
+import com.xcleans.hotfix.GlobalCfg;
+import com.xcleans.hotfix.manager.PatchException;
 import com.xcleans.hotfix.util.ReflectUtil;
 
 import org.json.JSONArray;

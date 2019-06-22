@@ -9,9 +9,9 @@ android {
         versionCode 1
         versionName "1.0"
 
-        ndk {
-            abiFilters "armeabi-v7a"
-        }
+//        ndk {
+//            abiFilters "armeabi-v7a"
+//        }
     }
 
     buildTypes {
@@ -22,21 +22,23 @@ android {
     }
 
 
-    externalNativeBuild {
-        ndkBuild {
-            // Tells Gradle to find the root ndk-build script in the same
-            // directory as the module's build.gradle file. Gradle requires this
-            // build script to add your ndk-build project as a build dependency and
-            // pull your native sources into your Android project.
-            path file('src/main/jni/src/Android.mk')
-            // Tells Gradle to put outputs from external native
-            // builds in the path specified below.
-            //默认使用.externalNativeBuild
-//           buildStagingDirectory "./outputs/ndk-build"
-        }
-    }
+//    externalNativeBuild {
+//        ndkBuild {
+//            // Tells Gradle to find the root ndk-build script in the same
+//            // directory as the module's build.gradle file. Gradle requires this
+//            // build script to add your ndk-build project as a build dependency and
+//            // pull your native sources into your Android project.
+//            path file('src/main/jni/src/Android.mk')
+//            // Tells Gradle to put outputs from external native
+//            // builds in the path specified below.
+//            //默认使用.externalNativeBuild
+////           buildStagingDirectory "./outputs/ndk-build"
+//        }
+//    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.8'
+    compileOnly 'com.android.support:design:28.0.0'
 }
