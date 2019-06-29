@@ -35,4 +35,6 @@ git submodule update
 #抓取子模块并更新
 git submodule update --remote
 Git 工具 - 子模块
+git submodule add 命令后面加上想要跟踪的项目 URL 来添加新的子模块
+git submodule update 则从该项目中抓取所有数据并检出父项目中列出的合适的提交。
 https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97

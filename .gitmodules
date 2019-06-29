@@ -25,3 +25,6 @@
 [submodule "thirdLib/atlas"]
 	path = thirdLib/atlas
 	url = https://github.com/alibaba/atlas.git
+[submodule "thirdLib/smali"]
+	path = thirdLib/smali
+	url = https://github.com/JesusFreke/smali.git
