@@ -173,7 +173,6 @@ final class ReLinkerInstance {
             if (force) {
                 log("Forcing a re-link of %s (%s)...", library, version);
             }
-
             cleanupOldLibFiles(context, library, version);
             libraryInstaller.installLibrary(context, libraryLoader.supportedAbis(), libraryLoader.mapLibraryName(library), workaroundFile, this);
         }

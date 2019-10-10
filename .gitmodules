@@ -28,3 +28,6 @@
 [submodule "thirdLib/smali"]
 	path = thirdLib/smali
 	url = https://github.com/JesusFreke/smali.git
+[submodule "thirdLib/VasDolly"]
+	path = thirdLib/VasDolly
+	url = https://github.com/Tencent/VasDolly.git

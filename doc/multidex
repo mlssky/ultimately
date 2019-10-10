@@ -1,6 +1,0 @@
-1.【65535】采用short类型引用DEX文件中的method，这也为method数量的峰值大小埋下了隐患。short类型能够表示的最大值是65536，
-也就说单个DEX文件中最多只有65536个method能够得到引用，
-如果代码执行了超出部分的method引用，自然会报错，如methodNotFound等
-2.LinearAllow 限制了内存分配的大小 5M/16M
-3.异步加载
-  启动新的进程，当前主进程等待

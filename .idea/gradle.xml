@@ -16,7 +16,9 @@
             <option value="$PROJECT_DIR$/basic/patcherjni" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/hotfix" />
+            <option value="$PROJECT_DIR$/kotlinapp" />
             <option value="$PROJECT_DIR$/patchTools" />
+            <option value="$PROJECT_DIR$/vasdollylib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

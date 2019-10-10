@@ -1,0 +1,15 @@
+package tv.yixia.kotlinapp
+
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+}

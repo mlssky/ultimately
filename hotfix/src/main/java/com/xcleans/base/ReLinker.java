@@ -93,6 +93,9 @@ public class ReLinker {
         String[] supportedAbis();
     }
 
+    /**
+     *
+     */
     public interface LibraryInstaller {
         void installLibrary(Context context, String[] abis, String mappedLibraryName, File destination, ReLinkerInstance logger);
     }

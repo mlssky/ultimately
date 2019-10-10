@@ -30,12 +30,19 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 final class ApkLibraryInstaller implements ReLinker.LibraryInstaller {
-    private static final int MAX_TRIES = 5;
+    private static final int MAX_TRIES        = 5;
     private static final int COPY_BUFFER_SIZE = 4096;
 
+    /**
+     *
+     * @param context
+     * @return
+     */
     private String[] sourceDirectories(final Context context) {
         final ApplicationInfo appInfo = context.getApplicationInfo();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && appInfo.splitSourceDirs != null && appInfo.splitSourceDirs.length != 0) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
+                appInfo.splitSourceDirs != null &&
+                appInfo.splitSourceDirs.length != 0) {
             String[] apks = new String[appInfo.splitSourceDirs.length + 1];
             apks[0] = appInfo.sourceDir;
             System.arraycopy(appInfo.splitSourceDirs, 0, apks, 1, appInfo.splitSourceDirs.length);
@@ -46,7 +53,7 @@ final class ApkLibraryInstaller implements ReLinker.LibraryInstaller {
     }
 
     private static class ZipFileInZipEntry {
-        public ZipFile zipFile;
+        public ZipFile  zipFile;
         public ZipEntry zipEntry;
 
         public ZipFileInZipEntry(ZipFile zipFile, ZipEntry zipEntry) {
