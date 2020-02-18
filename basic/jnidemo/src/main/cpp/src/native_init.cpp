@@ -1,11 +1,8 @@
-//
-// Created by mengliwei on 2019/2/16.
-//
-
 #include <jni.h>
 #include "test_lib_load_way2.h"
 
 /**
+ * JNIEXPORT 保证函数是可见的
  * JVM 加载启动时调用
  * @param vm
  * @param reserved
@@ -28,6 +25,9 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
 }
 
 /**
+ * #define JNIEXPORT  __attribute__ ((visibility ("default")))
+ * “default”：用它定义的符号将被导出，动态库中的函数默认是可见的
+ * 隐藏的符号将不会出现在动态符号表中，但是还被留在符号表中用于静态链接。
  * @param vm
  * @param reserved
  */

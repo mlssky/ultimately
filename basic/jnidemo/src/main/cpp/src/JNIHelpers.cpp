@@ -18,8 +18,8 @@
 #include "util/log.h"
 
 
-void jniThrowException(JNIEnv *env, const char *className, const char *msg) {
 
+void jniThrowException(JNIEnv *env, const char *className, const char *msg) {
     jclass clazz = env->FindClass(className);
     if (!clazz) {
         ALOGE("Unable to find exception class %s", className);

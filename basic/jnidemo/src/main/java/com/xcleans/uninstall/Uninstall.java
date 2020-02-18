@@ -64,6 +64,8 @@ public class Uninstall {
      *
      * @param info
      * @return
+     *
+     * (jobject)I
      */
     public native static int watch(UploadInfo info);
 

@@ -40,10 +40,6 @@ static JNINativeMethod gMethods[2] = {
 };
 
 int registerTestLibWayNativeMethod(JNIEnv *env) {
-
-
-//  memcpy()
-
   jclass localClsRef;
   if ((localClsRef = env->FindClass(JNI_PACKAGE "/MainActivity")) != NULL) {
     sMainActivityClassInfo.cls = reinterpret_cast<jclass>(env->NewGlobalRef(localClsRef));
@@ -70,11 +66,15 @@ void callFromJava(JNIEnv *env, jobject clazz, jstring str, jobject context) {
 
   const char *cStr = env->GetStringUTFChars(str, NULL);
 
+  //获取类
   jclass toastCls = env->FindClass("android/widget/Toast");
 //  Toast makeText(Context context, CharSequence text, @Duration int duration)
+  //获取方法ID
   jmethodID makeTextMethod = env->GetStaticMethodID(toastCls,
                                                     "makeText",
                                                     "(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;");
+
+
   jobject toastObj = env->CallStaticObjectMethod(toastCls, makeTextMethod, context, str, 1);
 
   //Toast#void show()

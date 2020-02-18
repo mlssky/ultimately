@@ -16,9 +16,9 @@ public class MainApplication extends Application {
         super.attachBaseContext(var1);
 //        SplitCompat.install(this);
 
-        StrictMode.VmPolicy.Builder builder=new StrictMode.VmPolicy.Builder();
-        builder.detectNonSdkApiUsage();
-        builder.detectLeakedClosableObjects();
-        StrictMode.setVmPolicy(builder.build());
+//        StrictMode.VmPolicy.Builder builder=new StrictMode.VmPolicy.Builder();
+//        builder.detectNonSdkApiUsage();
+//        builder.detectLeakedClosableObjects();
+//        StrictMode.setVmPolicy(builder.build());
     }
 }

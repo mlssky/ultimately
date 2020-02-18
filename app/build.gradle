@@ -28,10 +28,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:design:28.0.0'
-    api 'com.leon.channel:helper:2.0.3'
 //    implementation 'pub.devrel:easypermissions:2.0.1'
 //    implementation 'com.google.android.play:core:1.2.0'
-
 //    implementation project(path: ':hotfix')
 //    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.8'
 }

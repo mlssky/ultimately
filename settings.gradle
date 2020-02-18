@@ -1,4 +1,6 @@
-include ':app', ':patchTools', ':kotlinapp', ':vasdollylib',
+include ':app',
+        ':patchTools',
+        ':vasdollylib',
         ':hotfix',
         ':basiJava',
         ':common',
