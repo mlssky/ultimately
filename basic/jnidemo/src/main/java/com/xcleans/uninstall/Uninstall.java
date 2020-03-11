@@ -19,6 +19,8 @@ import android.content.Context;
 
 import com.xcleans.common.util.AppUtils;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * 卸载
  *
@@ -40,7 +42,7 @@ public class Uninstall {
     public static Uninstall getInstance(Context context) {
         if (mUninstall == null) {
             mUninstall = new Uninstall();
-            watch(create(context));
+//            watch(create(context));
         }
         return mUninstall;
     }
@@ -63,11 +65,13 @@ public class Uninstall {
      * 监控卸载
      *
      * @param info
-     * @return
-     *
-     * (jobject)I
+     * @return (jobject)I
      */
     public native static int watch(UploadInfo info);
+
+    public native String testString(String ss);
+
+    public native void testArr(int[] arrs);
 
     // Used to load the 'uninstall' library on application startup.
     static {

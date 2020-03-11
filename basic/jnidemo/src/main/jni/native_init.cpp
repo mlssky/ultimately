@@ -1,5 +1,6 @@
 #include <jni.h>
-#include "test_lib_load_way2.h"
+#include "util/log.h"
+#include "uninstalInit.h"
 
 /**
  * JNIEXPORT 保证函数是可见的
@@ -10,17 +11,21 @@
  */
 JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
 
-    //@since 2.3.3 开始使用java1.6
-    JNIEnv *env;
-    if (vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_6)) {
-        return JNI_ERR;
-    }
-
-    if (registerTestLibWayNativeMethod(env)) {
-        return JNI_ERR;
-    }
-
-    return JNI_VERSION_1_6;
+  //@since 2.3.3 开始使用java1.6
+  JNIEnv *env;
+  jint result = vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_6);
+  if (result) {
+    ALOGE("GetEnv err!!");
+    return JNI_ERR;
+  }
+  result = registerUninstallNativeMethod(env);
+  if (result) {
+    ALOGE("registerUninstallNativeMethod err!!");
+    return JNI_ERR;
+  }
+  ALOGE("JNI_OnLoad succ");
+  
+  return JNI_VERSION_1_6;
 
 }
 

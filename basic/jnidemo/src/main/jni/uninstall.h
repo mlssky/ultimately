@@ -7,6 +7,17 @@
 
 #include <jni.h>
 
+
+/**
+ *
+ * @param env
+ * @param thiz
+ * @param upload_obj  上传对象信息
+ * @return
+ */
+jint native_uninstall_watch(JNIEnv *env, jobject thiz, jobject upload_obj);
+
+
 /**
  * 获取SDK版本号
  */

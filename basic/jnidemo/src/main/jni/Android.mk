@@ -1,48 +1,42 @@
-#获取源码所在的位置
 LOCAL_PATH := $(call my-dir)
-
-#清空内置变量 clear-vars.mk
 include $(CLEAR_VARS)
 
 #设置编译模块的名字：最终生成的目标文件名
-LOCAL_MODULE := native-lib
-
-#可选。用来override LOCAL_MODULE. 即允许用户重新定义最终生成的目标文件名。
-#LOCAL_MODULE_FILENAME
-
-#1定义查找所有cpp文件的宏
-define all-cpp-files-under
-$(patsubst ./%,%, $(shell find $(LOCAL_PATH) -name "platform" -prune -o -name "*.cpp" -and -not -name ".*"))
-endef
-
-define all-subdir-cpp-files
-$(call all-cpp-files-under,.)
-endef
+#LOCAL_MODULE_FILENAME:用来override LOCAL_MODULE.即允许用户重新定义最终生成的目标文件名。
+LOCAL_MODULE := uninstall
 
 #匹配结果展开为已经存在的、使用空格分开的、匹配此模式的所有文件列表
 #基本用法$(wildcard PATTERN...)
 #相对路径会导致wildcard匹配不到源文件
 CPP_FILE_LIST := $(wildcard $(LOCAL_PATH)/*.cpp)
+C_FILE_LIST := $(wildcard $(LOCAL_PATH)/*.c)
 
-LOCAL_SRC_FILES := $(CPP_FILE_LIST:$(LOCAL_PATH)/%=%)
-#LOCAL_SRC_FILES := \
-#	JNIHelpers.cpp \
-#	test_lib_load_way2.cpp \
+#LOCAL_SRC_FILES := $(CPP_FILE_LIST:$(LOCAL_PATH)/%=%) \
+#                   $(C_FILE_LIST:$(LOCAL_PATH)/%=%)
+
+#源文件列表
+LOCAL_SRC_FILES := JNIHelpers.cpp \
+                   native_init.cpp \
+                   uninstall.cpp
 
 #指出C++ 扩展名 eg: .cxx .cpp .cc 从NDK R7后，可以写多个
 #LOCAL_CPP_EXTENSION
 
-#用来指定C++ features eg:rtti exceptions
-#LOCAL_CPP_FEATURES
+CXX11_FLAGS := -std=c++11
 
 #一个可选的设置，在编译C/C++ source 时添加如Flags，用来附加编译选项
-LOCAL_CFLAGS += -fvisibility=hidden
-
-#LOCAL_CPPFLAGS的别名
-#LOCAL_CXXFLAGS
+#-fvisibility=hidden 隐藏非必要函数导出
+#-DDEBUG :#define DEBUG
+LOCAL_CFLAGS += -fvisibility=hidden -DDEBUG
+ #-Werror  -Wreturn-type
 
 #==C++ Source 编译时添加的C Flags。这些Flags将出现在LOCAL_CFLAGS flags 的后面
-#LOCAL_CPPFLAGS
+#fexceptions异常处理支持
+#LOCAL_CXXFLAGS 是LOCAL_CPPFLAGS 别名
+LOCAL_CPPFLAGS+= -fexceptions
+
+#用来指定C++ features eg:rtti exceptions
+#LOCAL_CPP_FEATURES
 
 #==缺省模式下，ARM目标代码被编译为thumb模式。每个指令16位。如果指定此变量为：arm。 则指令为32位。
 #==LOCAL_ARM_MODE := arm   其实也可以指定某一个或者某几个文件的ARM指令模式
@@ -57,7 +51,7 @@ LOCAL_CFLAGS += -fvisibility=hidden
 
 CXX11_FLAGS := -std=c++11
 
-#设置添加系统库
+#设置添加系统库:andorid 系统默认内置的库
 LOCAL_LDLIBS :=-llog
 
 #设置链接到本模块的静态库
@@ -84,8 +78,6 @@ include $(BUILD_SHARED_LIBRARY)
 
 #==NDK提供的功能宏
 
-
-
 #Tips
 ##############################
 #=====NDK Build System 保留以下变量名===
@@ -105,6 +97,7 @@ include $(BUILD_SHARED_LIBRARY)
 #
 #
 ##########################
+
 
 
 

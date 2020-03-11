@@ -18,7 +18,7 @@
 #define LOG_H_
 
 #include <android/log.h>
-#include "JNIHelpers.h"
+#include "../JNIHelpers.h"
 
 BEGIN_C_DECLS
 
@@ -27,6 +27,7 @@ BEGIN_C_DECLS
  * You can modify this (for example with "#define LOG_NDEBUG 0"
  * at the top of your source file) to change that behavior.
  */
+//LOG_NDEBUG:0 开启log
 #define LOG_NDEBUG 0
 
 #ifndef LOG_NDEBUG
@@ -41,6 +42,64 @@ BEGIN_C_DECLS
 #define LOG_TAG "JNILog"
 #endif
 
+#define CONDITION(cond)     (__builtin_expect((cond)!=0, 0))
+
+
+/*
+ * Basic log message macro.
+ *
+ * Example:
+ *  ALOG(LOG_WARN, NULL, "Failed with error %d", errno);
+ *
+ * The second argument may be NULL or "" to indicate the "global" tag.
+ */
+#ifndef ALOG
+#define ALOG(priority, tag, ...) \
+    LOG_PRI(ANDROID_##priority, tag, __VA_ARGS__)
+#endif
+
+/*
+ * Log macro that allows you to specify a number for the priority.
+ *  __android_log_print(int prio, const char* tag, const char* fmt, ...)
+ */
+#ifndef LOG_PRI
+#define LOG_PRI(priority, tag, ...) \
+    __android_log_print(priority, tag, __VA_ARGS__)
+#endif
+
+/*
+ * Log macro that allows you to pass in a varargs ("args" is a va_list).
+ */
+#ifndef LOG_PRI_VA
+#define LOG_PRI_VA(priority, tag, fmt, args) \
+    __android_log_vprint(priority, NULL, tag, fmt, args)
+#endif
+
+/*
+ * Conditional given a desired logging priority and tag.
+ */
+#ifndef IF_ALOG
+#define IF_ALOG(priority, tag) \
+    if (__android_log_assert(ANDROID_##priority, tag))
+#endif
+
+/* Returns 2nd arg.  Used to substitute default value if caller's vararg list
+ * is empty.
+ */
+#define __android_second(dummy, second, ...)     second
+
+/* If passed multiple args, returns ',' followed by all but 1st arg, otherwise
+ * returns nothing.
+ */
+#define __android_rest(first, ...)               , ## __VA_ARGS__
+
+/**
+* # 字符后面
+* ## 连接字符串
+**/
+#define android_printAssert(cond, tag, fmt...) \
+    __android_log_assert(cond, tag, \
+        __android_second(0, ## fmt, NULL) __android_rest(fmt))
 
 /*
  * Simplified macro to send a verbose log message using the current LOG_TAG.
@@ -53,7 +112,33 @@ BEGIN_C_DECLS
 #endif
 #endif
 
-#define CONDITION(cond)     (__builtin_expect((cond)!=0, 0))
+/*
+ * Simplified macro to send a debug log message using the current LOG_TAG.
+ */
+#ifndef ALOGD
+#define ALOGD(...) ((void)ALOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__))
+#endif
+
+/*
+ * Simplified macro to send an info log message using the current LOG_TAG.
+ */
+#ifndef ALOGI
+#define ALOGI(...) ((void)ALOG(LOG_INFO, LOG_TAG, __VA_ARGS__))
+#endif
+
+/*
+ * Simplified macro to send a warning log message using the current LOG_TAG.
+ */
+#ifndef ALOGW
+#define ALOGW(...) ((void)ALOG(LOG_WARN, LOG_TAG, __VA_ARGS__))
+#endif
+
+/*
+ * Simplified macro to send an error log message using the current LOG_TAG.
+ */
+#ifndef ALOGE
+#define ALOGE(...) ((void)ALOG(LOG_ERROR, LOG_TAG, __VA_ARGS__))
+#endif
 
 #ifndef ALOGV_IF
 #if LOG_NDEBUG
@@ -66,25 +151,11 @@ BEGIN_C_DECLS
 #endif
 #endif
 
-/*
- * Simplified macro to send a debug log message using the current LOG_TAG.
- */
-#ifndef ALOGD
-#define ALOGD(...) ((void)ALOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__))
-#endif
-
 #ifndef ALOGD_IF
 #define ALOGD_IF(cond, ...) \
     ( (CONDITION(cond)) \
     ? ((void)ALOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__)) \
     : (void)0 )
-#endif
-
-/*
- * Simplified macro to send an info log message using the current LOG_TAG.
- */
-#ifndef ALOGI
-#define ALOGI(...) ((void)ALOG(LOG_INFO, LOG_TAG, __VA_ARGS__))
 #endif
 
 #ifndef ALOGI_IF
@@ -94,25 +165,11 @@ BEGIN_C_DECLS
     : (void)0 )
 #endif
 
-/*
- * Simplified macro to send a warning log message using the current LOG_TAG.
- */
-#ifndef ALOGW
-#define ALOGW(...) ((void)ALOG(LOG_WARN, LOG_TAG, __VA_ARGS__))
-#endif
-
 #ifndef ALOGW_IF
 #define ALOGW_IF(cond, ...) \
     ( (CONDITION(cond)) \
     ? ((void)ALOG(LOG_WARN, LOG_TAG, __VA_ARGS__)) \
     : (void)0 )
-#endif
-
-/*
- * Simplified macro to send an error log message using the current LOG_TAG.
- */
-#ifndef ALOGE
-#define ALOGE(...) ((void)ALOG(LOG_ERROR, LOG_TAG, __VA_ARGS__))
 #endif
 
 #ifndef ALOGE_IF
@@ -121,8 +178,6 @@ BEGIN_C_DECLS
     ? ((void)ALOG(LOG_ERROR, LOG_TAG, __VA_ARGS__)) \
     : (void)0 )
 #endif
-
-// ---------------------------------------------------------------------
 
 /*
  * Conditional based on whether the current LOG_TAG is enabled at
@@ -193,7 +248,6 @@ BEGIN_C_DECLS
  * are stripped out of release builds.
  */
 #if LOG_NDEBUG
-
 #ifndef LOG_FATAL_IF
 #define LOG_FATAL_IF(cond, ...) ((void)0)
 #endif
@@ -222,63 +276,5 @@ BEGIN_C_DECLS
 #endif
 
 
-/*
- * Basic log message macro.
- *
- * Example:
- *  ALOG(LOG_WARN, NULL, "Failed with error %d", errno);
- *
- * The second argument may be NULL or "" to indicate the "global" tag.
- */
-#ifndef ALOG
-#define ALOG(priority, tag, ...) \
-    LOG_PRI(ANDROID_##priority, tag, __VA_ARGS__)
-#endif
-
-/*
- * Log macro that allows you to specify a number for the priority.
- *  __android_log_print(int prio, const char* tag, const char* fmt, ...)
- */
-#ifndef LOG_PRI
-#define LOG_PRI(priority, tag, ...) \
-    __android_log_print(priority, tag, __VA_ARGS__)
-#endif
-
-/*
- * Log macro that allows you to pass in a varargs ("args" is a va_list).
- */
-#ifndef LOG_PRI_VA
-#define LOG_PRI_VA(priority, tag, fmt, args) \
-    __android_log_vprint(priority, NULL, tag, fmt, args)
-#endif
-
-/*
- * Conditional given a desired logging priority and tag.
- */
-#ifndef IF_ALOG
-#define IF_ALOG(priority, tag) \
-    if (__android_log_assert(ANDROID_##priority, tag))
-#endif
-
-/* Returns 2nd arg.  Used to substitute default value if caller's vararg list
- * is empty.
- */
-#define __android_second(dummy, second, ...)     second
-
-/* If passed multiple args, returns ',' followed by all but 1st arg, otherwise
- * returns nothing.
- */
-#define __android_rest(first, ...)               , ## __VA_ARGS__
-
-/**
-* # 字符后面
-* ## 连接字符串
-**/
-#define android_printAssert(cond, tag, fmt...) \
-    __android_log_assert(cond, tag, \
-        __android_second(0, ## fmt, NULL) __android_rest(fmt))
-
-
 END_C_DECLS
-
 #endif /* LOG_H_ */

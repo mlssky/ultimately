@@ -1,7 +1,7 @@
 include ':app',
         ':patchTools',
         ':vasdollylib',
-        ':hotfix',
+//        ':hotfix',
         ':basiJava',
         ':common',
         ':basic:jnidemo',

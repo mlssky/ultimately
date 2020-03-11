@@ -18,10 +18,10 @@ NDK_MODULE_PATH := $(APP_MK_DIR)
 APP_PLATFORM ：=android-14
 
 #NDK构建系统默认使用armeabi ABI生成机器代码，可以自己进行设置
-APP_ABI := armeabi-v7a x86
+APP_ABI := armeabi-v7a x86 arm64-v8a
 
 #此变量值为release或debug，默认为release发行模式，生成高度优化的二进制文件
-APP_OPTIM := release
+#APP_OPTIM := release
 
 #默认情况下，NDK构建系统为Android系统提供的最小C++运行时库
 #gnustl_static

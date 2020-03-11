@@ -1,18 +1,20 @@
-apply plugin: 'com.android.library'
+使用javah 生成jni 头文件
+生成Native 头文件：
+ #1:切换到Java目录下
+ #javah -d ./jni(生成头文件的文件目录)
+  -classpath （class文件路径）/Users/mengliwei/home/work/repo/ultimately/basic/jnidemo/build/intermediates/javac/debug/classes
+  -jni tv.yixia.testj.TestNativeMethod
 
-android {
+获取java native方法的签名
+用法：
+需要先切换到Classes目录
+1、javap -s packagename.classname
+2、javap -s -p packagename.classname
+-s表示打印签名信息
+-p表示打印所有函数和成员的签名信息，默认只打印public的签名信息。
 
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    defaultConfig {
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-//        ndk {
-//            abiFilters 'armeabi-v7a'
-//        }
-    }
 
+#ndk-Build 命令相关参数
 //    设置可执行文件为ndk-Build
 //    设置NDK_PROJECT_PATH=null
 //    设置APP_BUILD_SCRIPT参数，其值指向Android.mk文件
@@ -30,34 +32,3 @@ android {
 //    设置LOCAL_SHORT_COMMANDS=false
 //    添加-B参数
 //    添加-n参数
-
-//    https://www.colabug.com/211112.html
-    externalNativeBuild {
-//        ndkDirectory file()
-        ndkBuild {
-            // Tells Gradle to find the root ndk-build script in the same
-            // directory as the module's build.gradle file. Gradle requires this
-            // build script to add your ndk-build project as a build dependency and
-            // pull your native sources into your Android project.
-            path file('./jni/Android.mk')
-            // Tells Gradle to put outputs from external native
-            // builds in the path specified below.
-            buildStagingDirectory "./outputs/ndk-build"
-        }
-//        cmake{
-//
-//        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-}
