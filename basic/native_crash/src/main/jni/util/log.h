@@ -18,7 +18,7 @@
 #define LOG_H_
 
 #include <android/log.h>
-#include "../JNIHelpers.h"
+#include "JNIHelpers.h"
 
 BEGIN_C_DECLS
 

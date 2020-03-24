@@ -28,15 +28,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-final class ReLinkerInstance {
+public final class ReLinkerInstance {
     private static final String LIB_DIR = "lib";
 
-    protected final Set<String> loadedLibraries = new HashSet<String>();
-    protected final ReLinker.LibraryLoader libraryLoader;
+    protected final Set<String>               loadedLibraries = new HashSet<String>();
+    protected final ReLinker.LibraryLoader    libraryLoader;
     protected final ReLinker.LibraryInstaller libraryInstaller;
 
-    protected boolean force;
-    protected boolean recursive;
+    protected boolean         force;
+    protected boolean         recursive;
     protected ReLinker.Logger logger;
 
     protected ReLinkerInstance() {
@@ -146,7 +146,6 @@ final class ReLinkerInstance {
     }
 
     /**
-     *
      * @param context
      * @param library
      * @param version

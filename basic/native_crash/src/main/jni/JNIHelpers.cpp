@@ -15,7 +15,7 @@
  */
 
 #include <cstdlib>
-#include "JNIHelpers.h"
+#include "util/JNIHelpers.h"
 #include "util/log.h"
 
 /**
@@ -70,17 +70,21 @@ void jniThrowException(JNIEnv *env, const char *className, const char *msg) {
  * @return
  */
 jstring cStrTojstring(JNIEnv *env, jobject thiz, const char *pat) {
-  try {
-    jclass strClass = env->FindClass("java/lang/String");
-    //String(byte[],String)
-    jmethodID ctorID = env->GetMethodID(strClass, "<init>", "([BLjava/lang/String;)V");
+//  try {
+  jclass strClass = env->FindClass("java/lang/String");
+  if (strClass == NULL) {
+    ALOGD("Native registration unable to find class");
+    return NULL;
+  }
+  jmethodID ctorID = env->GetMethodID(strClass, "<init>", "([BLjava/lang/String;)V");
+  if (ctorID != NULL) {
     jbyteArray bytes = env->NewByteArray(strlen(pat));
-    //A family of functions that copies back a region of a primitive array from a buffer.
-    (env)->SetByteArrayRegion(bytes, 0, strlen(pat), (jbyte *) pat);
-    jstring encoding = env->NewStringUTF("UTF-8");
-    return (jstring) env->NewObject(strClass, ctorID, bytes, encoding);
-  } catch (...) {
-    ALOGE("===~~~~~~");
+    if (bytes != NULL) {
+      //A family of functions that copies back a region of a primitive array from a buffer.
+      (env)->SetByteArrayRegion(bytes, 0, strlen(pat), (jbyte *) pat);
+      jstring encoding = env->NewStringUTF("UTF-8");
+      return (jstring) env->NewObject(strClass, ctorID, bytes, encoding);
+    }
   }
   return NULL;
 }

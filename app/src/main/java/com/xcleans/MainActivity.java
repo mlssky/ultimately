@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import com.xcleans.apm.NativeUncaughtExceptionHandler;
+
 
 public class MainActivity extends BaseActivity {
 
@@ -22,6 +24,11 @@ public class MainActivity extends BaseActivity {
                 finish();
             }
         });
+
+//        SecurityManager s= System.getSecurityManager();
+
+        NativeUncaughtExceptionHandler s = new NativeUncaughtExceptionHandler();
+        s.init(this.getApplicationContext());
     }
 
 }

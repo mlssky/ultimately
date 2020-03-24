@@ -7,3 +7,4 @@ include ':app',
         ':basic:jnidemo',
         ':basic:native',
         ':basic:patcherjni'
+include ':basic:native_crash'

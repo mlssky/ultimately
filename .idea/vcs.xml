@@ -2,6 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/basic/native_crash/src/main/jni/third_party/breakpad" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/basic/native_crash/src/main/jni/third_party/breakpad/src/third_party/linux-syscall-support" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/basic/native_crash/src/main/jni/third_party/breakpad/src/third_party/lss" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/doc/andfix_apkpatch_support_multidex" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdLib/ArgusAPM" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdLib/FreeReflection" vcs="Git" />

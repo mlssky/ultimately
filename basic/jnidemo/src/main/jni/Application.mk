@@ -15,7 +15,7 @@ NDK_MODULE_PATH := $(APP_MK_DIR)
 #APP_PIE
 
 #设置Android平台的名称
-APP_PLATFORM ：=android-14
+APP_PLATFORM := android-14
 
 #NDK构建系统默认使用armeabi ABI生成机器代码，可以自己进行设置
 APP_ABI := armeabi-v7a x86 arm64-v8a
