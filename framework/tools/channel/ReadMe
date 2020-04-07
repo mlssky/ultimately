@@ -1,0 +1,19 @@
+apks:存储最新打包的apk
+build_release_v1.sh: 用于构建V1签名包
+build_release_v2.sh: 用于构建V1&V2签名包
+channelBuild:渠道打包工具
+   #out:渠道包输出目录
+   #v1：v1签名渠道打包工具
+   #v1_v2:v1&v2渠道打包工具
+
+Tips:
+ 1.google渠道包一定要zipalign处理且google渠道包最好关闭7zip
+ 2.如果同时开启V1/V2使用v1_v2渠道包工具
+ 3.V2签名(apksigner)机制是在Android 7.0中引入，一般使用V2签名时为了兼容会先进行V1签名(JAR签名&Zipalign)后再进行V2签名
+
+获取包签名的方式：
+java -jar VasDolly.jar get -s /home/user/test.apk
+
+
+
+

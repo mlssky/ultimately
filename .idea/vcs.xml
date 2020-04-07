@@ -16,6 +16,7 @@
     <mapping directory="$PROJECT_DIR$/thirdLib/booster" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdLib/epic" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdLib/java-design-patterns" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/thirdLib/matrix" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdLib/smali" vcs="Git" />
   </component>
 </project>

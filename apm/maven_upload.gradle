@@ -1,0 +1,44 @@
+apply plugin: 'maven'
+
+def maven_url1 = "http://47.94.151.225:8001/repository/maven-releases/"
+def userName1 = 'admin'
+def password1 = '5Hfh59crdudam6N'
+
+def version1 = "2.0.0"
+def artifactId1 = "baselib"
+def groupId1 = "com.coolwalk.good.base"
+def description1 = "base lib"
+def packaging1 = "aar"
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+
+            snapshotRepository(url: maven_url1) {
+                authentication(userName: userName1, password: password1)
+            }
+
+            repository(url: maven_url1) {
+                authentication(userName: userName1, password: password1)
+            }
+
+            pom.project {
+                version version1
+                artifactId artifactId1
+                groupId groupId1
+                packaging packaging1
+                description description1
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+
+artifacts {
+    archives sourcesJar
+}

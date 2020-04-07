@@ -1,0 +1,14 @@
+
+1.Android Studio 目录下已经包含了mindump_stackwalk 文件了
+/Users/mengliwei/Library/Android/sdk/lldb/3.1/bin/minidump_stackwalk
+
+
+1.minidump_stackwalk *.dmp > 输出文件
+2.
+/Users/mengliwei/Library/Android/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64/bin/aarch64-linux-android-addr2line
+
+-f -C -e debug的so文件路径 获取出错文件地址
+
+
+
+https://www.jianshu.com/p/f39e9265ea66

@@ -14,7 +14,6 @@ https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/functions.html
 
 adb logcat > crash.log
 ndk-stack -sym so所在目录 -dump crash.log
-
 adb logcat | ndk-stack -sym so所在目录
 
 使用JNI ：

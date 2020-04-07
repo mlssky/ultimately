@@ -4,6 +4,23 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm" name="argus-apm">
+                <projects>
+                  <project path="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm" />
+                  <project path="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-aop" />
+                  <project path="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-cloud" />
+                  <project path="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-cloud-dummy-impl" />
+                  <project path="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-main" />
+                  <project path="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-okhttp" />
+                  <project path="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-sample" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
         <option name="delegatedBuild" value="false" />
         <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
@@ -11,16 +28,26 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/apm" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/basiJava" />
             <option value="$PROJECT_DIR$/basic" />
+            <option value="$PROJECT_DIR$/basic/cw_lab" />
             <option value="$PROJECT_DIR$/basic/jnidemo" />
             <option value="$PROJECT_DIR$/basic/native" />
             <option value="$PROJECT_DIR$/basic/native_crash" />
             <option value="$PROJECT_DIR$/basic/patcherjni" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/patchTools" />
-            <option value="$PROJECT_DIR$/vasdollylib" />
+            <option value="$PROJECT_DIR$/processor" />
+            <option value="$PROJECT_DIR$/processor_lib" />
+            <option value="$PROJECT_DIR$/testui" />
+            <option value="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm" />
+            <option value="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-aop" />
+            <option value="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-cloud" />
+            <option value="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-cloud-dummy-impl" />
+            <option value="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-main" />
+            <option value="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-okhttp" />
+            <option value="$PROJECT_DIR$/thirdLib/ArgusAPM/argus-apm/argus-apm-sample" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -1,0 +1,40 @@
+apply from: "sdk_utils.gradle"
+apply plugin: 'maven'
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_REPO_RELEASE_URL) {
+                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+            }
+            pom.project {
+                version "${APMSDK_VERSION}.${APMSDK_BUILD}"
+                artifactId 'annotationLib'
+                groupId GROUP_ID
+                packaging TYPE
+                description DESCRIPTION
+            }
+        }
+    }
+}
+
+
+//task publishToJcenter << {
+//
+//}
+
+//publishToJcenter.dependsOn(copyArgusApmSdkAndMapping)
+//copyArgusApmSdkAndMapping.dependsOn(build)
+
+//copyNewDependentLibs.dependsOn(deleteOldDependentLibs)
+//copyNewDependentLibs.dependsOn(buildArgusApmCloudImplJar)
+//buildArgusApmCloudImplJar.mustRunAfter(deleteOldDependentLibs)
+//buildArgusApmCloudImplJar.dependsOn(buildArgusApmCloudJar)
+//buildArgusApmCloudImplJar.dependsOn(":argus-apm-cloud-dummy-impl:build")
+//buildArgusApmCloudJar.dependsOn(":argus-apm-cloud:build")
+
+//uploadArchives.dependsOn(publishToJcenter)
+
+//publishToJcenter.group = APM_TASKS_GROUP
+//copyNewDependentLibs.group = APM_TASKS_GROUP

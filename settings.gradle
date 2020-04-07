@@ -1,10 +1,21 @@
 include ':app',
         ':patchTools',
-        ':vasdollylib',
-//        ':hotfix',
-        ':basiJava',
-        ':common',
         ':basic:jnidemo',
         ':basic:native',
-        ':basic:patcherjni'
-include ':basic:native_crash'
+        ':basic:patcherjni',
+        ':basic:native_crash',
+        ':basic:cw_lab',
+        ':apm',
+        ':processor',
+        ':processor_lib'
+
+
+include ':common'
+project(':common').projectDir = file('common')
+
+//子工程配置
+includeBuild 'thirdLib/ArgusAPM/argus-apm'
+
+//include ':processor'
+//include ':processor_lib'
+include ':testui'

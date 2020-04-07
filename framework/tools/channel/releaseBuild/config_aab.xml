@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resproguard>
+    <issue id="whitelist" isactive="true">
+
+        <!--Configuration file config.xml, whitelist support regular expressions-->
+        <!--you must write the full package name, such as com.tencent.mm.R -->
+        <!--for some reason, we should keep our icon better-->
+        <!--and it support *, ?, such as com.tencent.mm.R.drawable.emoji_*, com.tencent.mm.R.drawable.emoji_?-->
+
+        <!--App icon config-->
+        <path value="tv.poly.wallpapers.R.mipmap.ic_launcher" />
+        <path value="tv.poly.wallpapers.R.drawable.ic_launcher" />
+        <path value="tv.poly.wallpapers.R.mipmap.ic_notification" />
+        <path value="tv.poly.wallpapers.R.mipmap.ic_notification_*" />
+        <path value="tv.poly.wallpapers.R.drawable.ic_notification" />
+        <path value="tv.poly.wallpapers.R.drawable.ic_notification_*" />
+
+        <!--umeng socialize SDK config-->
+        <path value="tv.poly.wallpapers.R.drawable.umeng*" />
+        <path value="tv.poly.wallpapers.R.layout.umeng*" />
+        <path value="tv.poly.wallpapers.R.style.umeng*" />
+        <path value="tv.poly.wallpapers.R.color.umeng*" />
+        <path value="tv.poly.wallpapers.R.string.umeng*" />
+        <path value="tv.poly.wallpapers.R.dimen.umeng*" />
+        <path value="tv.poly.wallpapers.R.drawable.weibosdk_empty_failed" />
+        <path value="tv.poly.wallpapers.R.id.webView" />
+        <path value="tv.poly.wallpapers.R.anim.umeng*" />
+        <path value="tv.poly.wallpapers.R.string.UM*" />
+        <path value="tv.poly.wallpapers.R.string.tb_*" />
+        <path value="tv.poly.wallpapers.R.layout.socialize_*" />
+        <path value="tv.poly.wallpapers.R.layout.*messager*" />
+        <path value="tv.poly.wallpapers.R.layout.tb_*" />
+        <path value="tv.poly.wallpapers.R.color.umeng*" />
+        <path value="tv.poly.wallpapers.R.color.tb_*" />
+        <path value="tv.poly.wallpapers.R.style.*UM*" />
+        <path value="tv.poly.wallpapers.R.drawable.tb_*" />
+        <path value="tv.poly.wallpapers.R.drawable.sina*" />
+        <path value="tv.poly.wallpapers.R.drawable.qq_*" />
+        <path value="tv.poly.wallpapers.R.drawable.tb_*" />
+        <path value="tv.poly.wallpapers.R.id.umeng*" />
+        <path value="tv.poly.wallpapers.R.id.*messager*" />
+        <path value="tv.poly.wallpapers.R.id.progress_bar_parent" />
+        <path value="tv.poly.wallpapers.R.id.socialize_*" />
+        <path value="tv.poly.wallpapers.R.id.webView" />
+        <path value="tv.poly.wallpapers.R.drawable.umeng_push_notification_default_large_icon" />
+        <path value="tv.poly.wallpapers.R.drawable.umeng_push_notification_default_small_icon" />
+        <path value="tv.poly.wallpapers.R.drawable.mipush_notification" />
+        <path value="tv.poly.wallpapers.R.drawable.mipush_small_notification" />
+        <path value="tv.poly.wallpapers.R.drawable.push" />
+        <path value="tv.poly.wallpapers.R.drawable.push_small" />
+        <path value="tv.poly.wallpapers.R.layout.getui_notification" />
+        <path value="tv.poly.wallpapers.R.id.getui_*" />
+        <path value="tv.poly.wallpapers.R.layout.push_*" />
+        <path value="tv.poly.wallpapers.R.drawable.stat_sys_third_app_notify" />
+        <path value="tv.poly.wallpapers.R.drawable.mz_push_notification_small_icon" />
+        <path value="tv.poly.wallpapers.R.mipmap.ic_notification" />
+        <path value="tv.poly.wallpapers.R.mipmap.ic_notification_24" />
+        <path value="tv.poly.wallpapers.R.layout.push_*" />
+
+        <!--gcm-->
+        <path value="tv.poly.wallpapers.R.integer.google_play_services_version"></path>
+        <path value="tv.poly.wallpapers.R.string.default_web_client_id" />
+        <path value="tv.poly.wallpapers.R.string.firebase_database_url" />
+        <path value="tv.poly.wallpapers.R.string.gcm_defaultSenderId" />
+        <path value="tv.poly.wallpapers.R.string.google_api_key" />
+        <path value="tv.poly.wallpapers.R.string.google_app_id" />
+        <path value="tv.poly.wallpapers.R.string.google_crash_reporting_api_key" />
+        <path value="tv.poly.wallpapers.R.string.google_storage_bucket" />
+        <path value="tv.poly.wallpapers.R.string.project_id"></path>
+
+        <path value="tv.poly.wallpapers.R.layout.zalosdk_*" />
+        <path value="tv.poly.wallpapers.R.drawable.zalosdk_*" />
+        <path value="tv.poly.wallpapers.R.color.zalosdk_*" />
+        <path value="tv.poly.wallpapers.R.id.zalosdk_*" />
+        <path value="tv.poly.wallpapers.R.string.zalosdk_*" />
+        <path value="tv.poly.wallpapers.R.dimen.zalosdk_*" />
+        <path value="tv.poly.wallpapers.R.style.zalosdk_*" />
+        <path value="tv.poly.wallpapers.R.string.txt_*" />
+
+        <!--night mode config-->
+        <path value="tv.poly.wallpapers.R.mipmap.*_night" />
+        <path value="tv.poly.wallpapers.R.drawable.*_night" />
+        <path value="tv.poly.wallpapers.R.drawable.*_night.9.*" />
+        <path value="tv.poly.wallpapers.R.color.*_night" />
+        <path value="tv.poly.wallpapers.R.mipmap.*_dmodel" />
+        <path value="tv.poly.wallpapers.R.drawable.*_dmodel" />
+        <path value="tv.poly.wallpapers.R.color.*_dmodel" />
+
+        <!--ad -->
+        <path value="tv.poly.wallpapers.R.id.tt_*" />
+        <path value="tv.poly.wallpapers.R.id.appdownloader_*" />
+        <path value="tv.poly.wallpapers.R.color.tt_*" />
+        <path value="tv.poly.wallpapers.R.color.appdownloader_*" />
+        <path value="tv.poly.wallpapers.R.dimen.tt_*" />
+        <path value="tv.poly.wallpapers.R.drawable.appdownloader_*" />
+        <path value="tv.poly.wallpapers.R.drawable.tt_*" />
+        <path value="tv.poly.wallpapers.R.drawable.gdt_*" />
+        <path value="tv.poly.wallpapers.R.integer.gdt_*" />
+        <path value="tv.poly.wallpapers.R.integer.tt_*" />
+        <path value="tv.poly.wallpapers.R.layout.appdownloader_*" />
+        <path value="tv.poly.wallpapers.R.layout.tt_*" />
+        <path value="tv.poly.wallpapers.R.string.tt_*" />
+        <path value="tv.poly.wallpapers.R.string.app_name" />
+        <path value="tv.poly.wallpapers.R.string.appdownloader_*" />
+        <path value="tv.poly.wallpapers.R.style.appdownloader_*" />
+        <path value="tv.poly.wallpapers.R.style.tt_*" />
+        <path value="tv.poly.wallpapers.R.style.Theme_Dialog_TTDownload" />
+        <path value="tv.poly.wallpapers.R.style.Theme_Dialog_TTDownloadOld" />
+        <path value="tv.poly.wallpapers.R.anim.tt_*" />
+        <!-- hw push -->
+        <path value="tv.poly.wallpapers.R.string.hms_update_title" />
+        <!-- umeng -->
+        <path value="tv.poly.wallpapers.R.anim.umeng*" />
+        <path value="tv.poly.wallpapers.R.string.umeng*" />
+        <path value="tv.poly.wallpapers.R.string.UM*" />
+        <path value="tv.poly.wallpapers.R.string.tb_*" />
+        <path value="tv.poly.wallpapers.R.layout.umeng*" />
+        <path value="tv.poly.wallpapers.R.layout.socialize_*" />
+        <path value="tv.poly.wallpapers.R.layout.*messager*" />
+        <path value="tv.poly.wallpapers.R.layout.tb_*" />
+        <path value="tv.poly.wallpapers.R.color.umeng*" />
+        <path value="tv.poly.wallpapers.R.color.tb_*" />
+        <path value="tv.poly.wallpapers.R.style.*UM*" />
+        <path value="tv.poly.wallpapers.R.style.umeng*" />
+        <path value="tv.poly.wallpapers.R.drawable.umeng*" />
+        <path value="tv.poly.wallpapers.R.drawable.tb_*" />
+        <path value="tv.poly.wallpapers.R.drawable.sina*" />
+        <path value="tv.poly.wallpapers.R.drawable.qq_*" />
+        <path value="tv.poly.wallpapers.R.drawable.tb_*" />
+        <path value="tv.poly.wallpapers.R.id.umeng*" />
+        <path value="tv.poly.wallpapers.R.id.*messager*" />
+        <path value="tv.poly.wallpapers.R.id.progress_bar_parent" />
+        <path value="tv.poly.wallpapers.R.id.socialize_*" />
+        <path value="tv.poly.wallpapers.R.id.webView" />
+        <path value="tv.poly.wallpapers.R.string.mintegral*" />
+        <path value="tv.poly.wallpapers.R.layout.mintegral*" />
+        <path value="tv.poly.wallpapers.R.drawable.mintegral*" />
+        <path value="tv.poly.wallpapers.R.anim.mintegral*" />
+        <path value="tv.poly.wallpapers.R.color.mintegral*" />
+        <path value="tv.poly.wallpapers.R.style.mintegral*" />
+        <path value="tv.poly.wallpapers.R.id.mintegral*" />
+    </issue>
+    <filter isactive="false">
+        <rule value="*/arm64-v8a/*" />
+        <rule value="META-INF/*.RSA" />
+    </filter>
+</resproguard>
